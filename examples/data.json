@@ -1,0 +1,80 @@
+[
+  {
+    "name": {
+      "title": "Mrs",
+      "first": "Jenny",
+      "last": "Horton"
+    },
+    "gender": "female",
+    "email": "jenny.horton@example.com",
+    "image": "https://randomuser.me/api/portraits/thumb/women/18.jpg",
+    "dob": "1990-05-18T10:58:31.916Z",
+    "age": 31,
+    "phone": "015242 74099"
+  },
+  {
+    "name": {
+      "title": "Mrs",
+      "first": "Hanny",
+      "last": "Krell"
+    },
+    "gender": "female",
+    "email": "hanny.krell@example.com",
+    "image": "https://randomuser.me/api/portraits/thumb/women/27.jpg",
+    "dob": "1975-06-19T17:42:23.645Z",
+    "age": 46,
+    "phone": "0377-6409787"
+  },
+  {
+    "name": {
+      "title": "Mademoiselle",
+      "first": "Michaela",
+      "last": "Charles"
+    },
+    "gender": "female",
+    "email": "michaela.charles@example.com",
+    "image": "https://randomuser.me/api/portraits/thumb/women/20.jpg",
+    "dob": "1965-11-09T23:25:05.461Z",
+    "age": 56,
+    "phone": "076 901 27 44"
+  },
+  {
+    "name": {
+      "title": "Mr",
+      "first": "Lonnie",
+      "last": "Lucas"
+    },
+    "gender": "male",
+    "email": "lonnie.lucas@example.com",
+    "image": "https://randomuser.me/api/portraits/thumb/men/85.jpg",
+    "dob": "1958-01-12T03:14:32.858Z",
+    "age": 63,
+    "phone": "(483)-680-3089"
+  },
+  {
+    "name": {
+      "title": "Ms",
+      "first": "Laura",
+      "last": "Watson"
+    },
+    "gender": "female",
+    "email": "laura.watson@example.com",
+    "image": "https://randomuser.me/api/portraits/thumb/women/35.jpg",
+    "dob": "1969-07-10T20:32:46.300Z",
+    "age": 52,
+    "phone": "016977 6771"
+  },
+  {
+    "name": {
+      "title": "Ms",
+      "first": "Charlene",
+      "last": "Brown"
+    },
+    "gender": "female",
+    "email": "charlene.brown@example.com",
+    "image": "https://randomuser.me/api/portraits/thumb/women/92.jpg",
+    "dob": "1995-03-13T14:32:58.085Z",
+    "age": 26,
+    "phone": "(265)-880-6174"
+  }
+]
