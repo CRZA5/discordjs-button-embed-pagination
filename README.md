@@ -2,9 +2,8 @@
 
 <p>
 	<a href="https://discord.gg/5DRwubYxmj"><img src="https://img.shields.io/discord/658881908733771816?color=5865F2&logo=discord&logoColor=white" alt="Discord server" /></a>
-
+	<a href="https://github.com/CRZA5/discordjs-button-embed-pagination/actions"><img src="https://github.com/CRZA5/discordjs-button-embed-pagination-ts/actions/workflows/docs.yml/badge.svg" alt="Build status" /></a>
 </p>
-	[![Documentation](https://github.com/CRZA5/discordjs-button-embed-pagination/actions/workflows/docs.yml/badge.svg)](https://github.com/CRZA5/discordjs-button-embed-pagination/actions/workflows/docs.yml)
 
 ## About
 
