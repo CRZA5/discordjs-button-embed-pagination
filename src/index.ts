@@ -77,7 +77,7 @@ export class Pagination {
                     max: this.pages.length * 5,
                 }
             );
-        setInterval(async () => {
+        setTimeout(async () => {
             interactionCollector?.stop("Timeout");
             await this?.message?.edit({
                 components: [],
