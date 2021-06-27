@@ -31,7 +31,7 @@
     "dist/*"
   ],
   "dependencies": {
-    "discord.js": "https://github.com/discordjs/discord.js.git"
+    "discord.js": "^13.0.0-dev.985d4d6a438fc9123264f6a1c600f34fccc1825f"
   },
   "devDependencies": {
     "@babel/core": "^7.14.3",
