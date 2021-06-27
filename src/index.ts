@@ -59,28 +59,34 @@ class Pagination {
                         )
                     }) : [
                         {
+                            type: 2,
                             style: "PRIMARY",
                             label: "First",
                             emoji: "⏮️",
                             customID: "⏮️"
                         }, {
+                            type: 2,
+
                             style: "PRIMARY",
                             label: "Next",
                             emoji: "◀️",
                             customID: "◀️"
 
                         }, {
+                            type: 2,
                             style: "DANGER",
                             label: "Stop",
                             emoji: "⏹️",
                             customID: "⏹️"
 
                         }, {
+                            type: 2,
                             style: "PRIMARY",
                             label: "Prev",
                             emoji: "▶️",
                             customID: "▶️"
                         }, {
+                            type: 2,
                             style: "PRIMARY",
                             label: "Last",
                             emoji: "⏭️",
