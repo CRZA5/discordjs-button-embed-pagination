@@ -1,4 +1,4 @@
-import {DMChannel, Message, MessageButton, MessageComponentInteraction, MessageEmbed, TextChannel,} from "discord.js";
+import {DMChannel, Message, MessageButton, MessageEmbed, TextChannel,} from "discord.js";
 import {ButtonOption} from "./types/ButtonOption";
 
 const availableEmojis = ["⏮️", "◀️", "⏹️", "▶️", "⏭️"];
@@ -71,14 +71,13 @@ export class Pagination {
         }
         const interactionCollector =
             this.message.createMessageComponentInteractionCollector(
-                (_interaction: MessageComponentInteraction) => {
-                    return true;
-                },
                 {
-                    time: 60000,
                     max: this.pages.length * 5,
                 }
             );
+        setInterval(() => {
+            interactionCollector?.stop("Timeout");
+        })
         interactionCollector.on("collect", async (interaction) => {
             const {customID} = interaction;
             switch (customID) {
