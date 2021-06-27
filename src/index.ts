@@ -21,7 +21,7 @@ export class Pagination {
         channel: TextChannel | DMChannel,
         pages: MessageEmbed[],
         private readonly footerText = "Page",
-        private readonly timeout : number,
+        private readonly timeout? : number,
         private readonly options ?: ButtonOption[]
     ) {
         if (options && options.length > 5) {
