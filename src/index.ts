@@ -14,12 +14,14 @@ export class Pagination {
      * @param {TextChannel | DMChannel} channel - The target channel
      * @param {MessageEmbed[]} pages - Embed pages
      * @param {string} [footerText] - Optional footer text, will show `Text 1 of 5` if you pass `Text`, for example
+     * @param {number} timeout - How long button need to be active
      * @param {ButtonOption[]} options - optional options for the buttons
      */
     constructor(
         channel: TextChannel | DMChannel,
         pages: MessageEmbed[],
         private readonly footerText = "Page",
+        private readonly timeout : number,
         private readonly options ?: ButtonOption[]
     ) {
         if (options && options.length > 5) {
@@ -75,9 +77,12 @@ export class Pagination {
                     max: this.pages.length * 5,
                 }
             );
-        setInterval(() => {
+        setInterval(async () => {
             interactionCollector?.stop("Timeout");
-        })
+            await this?.message?.edit({
+                components: [],
+            });
+        } , this.timeout ? this.timeout : 60000)
         interactionCollector.on("collect", async (interaction) => {
             const {customID} = interaction;
             switch (customID) {
