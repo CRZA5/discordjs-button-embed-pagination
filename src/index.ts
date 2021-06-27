@@ -3,7 +3,7 @@ import {ButtonOption} from "./types/ButtonOption";
 
 const availableEmojis = ["⏮️", "◀️", "⏹️", "▶️", "⏭️"];
 
-export class Pagination {
+class Pagination {
     private message?: Message;
     private readonly channel: TextChannel | DMChannel;
     private readonly pages: MessageEmbed[];
@@ -21,7 +21,7 @@ export class Pagination {
         channel: TextChannel | DMChannel,
         pages: MessageEmbed[],
         private readonly footerText = "Page",
-        private readonly timeout? : number,
+        private readonly timeout?: number,
         private readonly options ?: ButtonOption[]
     ) {
         if (options && options.length > 5) {
@@ -57,14 +57,37 @@ export class Pagination {
                                 customID: availableEmojis[i]
                             }
                         )
-                    }) : availableEmojis.map((x) => {
-                        return new MessageButton({
-                            emoji: x,
-                            style: 1,
-                            type: 2,
-                            customID: x,
-                        });
-                    }),
+                    }) : [
+                        {
+                            style: "PRIMARY",
+                            label: "First",
+                            emoji: "⏮️",
+                            customID: "⏮️"
+                        }, {
+                            style: "PRIMARY",
+                            label: "Next",
+                            emoji: "◀️",
+                            customID: "◀️"
+
+                        }, {
+                            style: "DANGER",
+                            label: "Stop",
+                            emoji: "⏹️",
+                            customID: "⏹️"
+
+                        }, {
+                            style: "PRIMARY",
+                            label: "Prev",
+                            emoji: "▶️",
+                            customID: "▶️"
+                        }, {
+                            style: "PRIMARY",
+                            label: "Last",
+                            emoji: "⏭️",
+                            customID: "⏭️"
+                        },
+
+                    ]
                 },
             ],
         });
@@ -82,7 +105,7 @@ export class Pagination {
             await this?.message?.edit({
                 components: [],
             });
-        } , this.timeout ? this.timeout : 60000)
+        }, this.timeout ? this.timeout : 60000)
         interactionCollector.on("collect", async (interaction) => {
             const {customID} = interaction;
             switch (customID) {
@@ -137,4 +160,9 @@ export class Pagination {
             });
         });
     }
+}
+
+export {
+    ButtonOption,
+    Pagination
 }
