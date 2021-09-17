@@ -54,7 +54,7 @@ class Pagination {
                                 style: x.style,
                                 type: 2,
                                 label: x.label,
-                                customID: availableEmojis[i]
+                                customId: availableEmojis[i]
                             }
                         )
                     }) : [
@@ -63,34 +63,34 @@ class Pagination {
                             style: "PRIMARY",
                             label: "First",
                             emoji: "⏮️",
-                            customID: "⏮️"
+                            customId: "⏮️"
                         }, {
                             type: 2,
 
                             style: "PRIMARY",
                             label: "Next",
                             emoji: "◀️",
-                            customID: "◀️"
+                            customId: "◀️"
 
                         }, {
                             type: 2,
                             style: "DANGER",
                             label: "Stop",
                             emoji: "⏹️",
-                            customID: "⏹️"
+                            customId: "⏹️"
 
                         }, {
                             type: 2,
                             style: "PRIMARY",
                             label: "Prev",
                             emoji: "▶️",
-                            customID: "▶️"
+                            customId: "▶️"
                         }, {
                             type: 2,
                             style: "PRIMARY",
                             label: "Last",
                             emoji: "⏭️",
-                            customID: "⏭️"
+                            customId: "⏭️"
                         },
 
                     ]
@@ -101,7 +101,7 @@ class Pagination {
             return;
         }
         const interactionCollector =
-            this.message.createMessageComponentInteractionCollector(
+            this.message?.createMessageComponentCollector(
                 {
                     max: this.pages.length * 5,
                 }
@@ -113,8 +113,8 @@ class Pagination {
             });
         }, this.timeout ? this.timeout : 60000)
         interactionCollector.on("collect", async (interaction) => {
-            const {customID} = interaction;
-            switch (customID) {
+            const {customId} = interaction;
+            switch (customId) {
                 case availableEmojis[0]:
                     // Start
                     if (this.index !== 0) {

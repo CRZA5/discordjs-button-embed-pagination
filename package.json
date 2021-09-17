@@ -1,6 +1,6 @@
 {
   "name": "discordjs-button-embed-pagination",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "Discord.js V12 embed pagination with button",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -31,7 +31,7 @@
     "dist/*"
   ],
   "dependencies": {
-    "discord.js": "^13.0.0-dev.985d4d6a438fc9123264f6a1c600f34fccc1825f"
+    "discord.js": "^13.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.14.3",

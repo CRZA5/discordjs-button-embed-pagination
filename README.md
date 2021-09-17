@@ -14,7 +14,6 @@ Discord.js V13 embed pagination with button written in typescript
 
 - Send paginated embeds
 
-*_This uses development version of discordjs_
 
 **Useful links:**
 - [Documentation](https://crza5.github.io/discordjs-button-embed-pagination/)
