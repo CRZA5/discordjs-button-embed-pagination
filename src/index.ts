@@ -68,7 +68,7 @@ class Pagination {
                             type: 2,
 
                             style: "PRIMARY",
-                            label: "Next",
+                            label: "Prev",
                             emoji: "◀️",
                             customId: "◀️"
 
@@ -82,7 +82,7 @@ class Pagination {
                         }, {
                             type: 2,
                             style: "PRIMARY",
-                            label: "Prev",
+                            label: "Next",
                             emoji: "▶️",
                             customId: "▶️"
                         }, {
