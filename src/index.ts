@@ -113,51 +113,33 @@ class Pagination {
             });
         }, this.timeout ? this.timeout : 60000)
         interactionCollector.on("collect", async (interaction) => {
-            const {customId} = interaction;
-            switch (customId) {
-                case availableEmojis[0]:
-                    // Start
-                    if (this.index !== 0) {
-                        this.index = 0;
-                        await interaction.update({
-                            embeds: [this.pages[this.index]],
-                        });
-                    }
-                    break;
-                case availableEmojis[1]:
-                    // Prev
-                    this.index--;
-                    if (this.index <= 0) this.index = this.pages.length - 1;
-                    await interaction.update({
-                        embeds: [this.pages[this.index]],
-                    });
-                    break;
-                case availableEmojis[2]:
-                    // Stop
-                    interactionCollector.stop("stopped by user");
-                    await interaction.update({
-                        components: [],
-                    });
-                    break;
-                case availableEmojis[3]:
-                    // Next
-                    this.index++;
-                    if (this.index >= this.pages.length) {
-                        this.index = 0;
-                    }
-                    await interaction.update({
-                        embeds: [this.pages[this.index]],
-                    });
-                    break;
-                case availableEmojis[4]:
-                    // End
-                    if (this.index !== this.pages.length - 1) {
-                        this.index = this.pages.length - 1;
-                        await interaction.update({
-                            embeds: [this.pages[this.index]],
-                        });
-                    }
-                    break;
+            const { customId } = interaction;
+            let newIndex =
+              customId === availableEmojis[0]
+                ? 0 // Start
+                : customId === availableEmojis[1]
+                ? this.index - 1 // Prev
+                : customId === availableEmojis[2]
+                ? NaN // Stop
+                : customId === availableEmojis[3]
+                ? this.index + 1 // Next
+                : customId === availableEmojis[4]
+                ? this.pages.length - 1 // End
+                : this.index;
+            if (isNaN(newIndex)) {
+              // Stop
+              interactionCollector.stop("stopped by user");
+              await interaction.update({
+                components: [],
+              });
+            } else {
+              if (newIndex < 0) newIndex = 0;
+              if (newIndex >= this.pages.length)
+                  newIndex = this.pages.length - 1;
+              this.index = newIndex;
+              await interaction.update({
+                embeds: [this.pages[this.index]],
+              });
             }
         });
         interactionCollector.on("end", async () => {
