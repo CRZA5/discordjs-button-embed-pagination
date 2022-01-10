@@ -1,11 +1,14 @@
-const {Client, Intents, MessageEmbed} = require("discord.js");
+const {Client, MessageEmbed} = require("discord.js");
 const {Pagination} = require("discordjs-button-embed-pagination");
 const data = require("../data.json");
 
-export class Bot extends Client {
+class Bot extends Client {
     constructor() {
         super({
-            intents: Intents.NON_PRIVILEGED,
+            intents: [
+                "GUILDS",
+                "GUILD_MESSAGES"
+            ],
         });
         this.on("ready", this.onReady);
         this.on("message", this.onMessage);
@@ -63,3 +66,4 @@ export class Bot extends Client {
         }
     }
 }
+module.exports = Bot;

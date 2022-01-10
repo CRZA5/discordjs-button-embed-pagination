@@ -1,11 +1,14 @@
-import {Client, Intents, Message, MessageEmbed, TextChannel,} from "discord.js";
+import {Client, Message, MessageEmbed, TextChannel,} from "discord.js";
 import {Pagination} from "discordjs-button-embed-pagination";
 import data from "../data.json";
 
 export class Bot extends Client {
     constructor() {
         super({
-            intents: Intents.NON_PRIVILEGED,
+            intents: [
+                "GUILDS",
+                "GUILD_MESSAGES"
+            ],
         });
         this.on("ready", this.onReady);
         this.on("message", this.onMessage);
