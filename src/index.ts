@@ -32,9 +32,9 @@ class Pagination {
         this.channel = channel;
         this.pages = pages.map((page, pageIndex) => {
             if (page.footer && (page.footer.text || page.footer.iconURL)) return page;
-            return page.setFooter(
-                `${footerText} ${pageIndex + 1} of ${pages.length}`
-            );
+            return page.setFooter({
+                text: `${footerText} ${pageIndex + 1} of ${pages.length}`
+            });
         });
     }
 
