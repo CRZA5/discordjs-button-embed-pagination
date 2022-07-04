@@ -1,4 +1,4 @@
-import {DMChannel, Message, MessageButton, MessageEmbed, TextChannel,} from "discord.js";
+import {DMChannel, Message, MessageButton, MessageEmbed, TextChannel, Mess, MessageAttachment} from "discord.js";
 import {ButtonOption} from "./types/ButtonOption";
 
 const availableEmojis = ["⏮️", "◀️", "⏹️", "▶️", "⏭️"];
@@ -13,6 +13,7 @@ class Pagination {
      *
      * @param {TextChannel | DMChannel} channel - The target channel
      * @param {MessageEmbed[]} pages - Embed pages
+     * @param {MessageAttachment[]} files - Optional files to attach
      * @param {string} [footerText] - Optional footer text, will show `Text 1 of 5` if you pass `Text`, for example
      * @param {number} timeout - How long button need to be active
      * @param {ButtonOption[]} options - optional options for the buttons
@@ -22,14 +23,19 @@ class Pagination {
         pages: MessageEmbed[],
         private readonly footerText = "Page",
         private readonly timeout?: number,
-        private readonly options ?: ButtonOption[]
-    ) {
+        private readonly options ?: ButtonOption[],
+        private readonly files ?: MessageAttachment[],
+) {
         if (options && options.length > 5) {
             throw new TypeError("You have passed more than 5 buttons as options")
         } else if (options && options.length < 4) {
             throw new TypeError("You have passed less than 5 buttons as options")
         }
         this.channel = channel;
+        if (files) {
+            this.files = files;
+        }
+        
         this.pages = pages.map((page, pageIndex) => {
             if (page.footer && (page.footer.text || page.footer.iconURL)) return page;
             return page.setFooter({
@@ -44,6 +50,7 @@ class Pagination {
     async paginate(): Promise<void> {
         this.message = await this.channel.send({
             embeds: [this.pages[this.index]],
+            ...(this.files && {files: [this.files[this.index]]}),
             components: [
                 {
                     type: 1,
@@ -138,7 +145,8 @@ class Pagination {
                   newIndex = this.pages.length - 1;
               this.index = newIndex;
               await interaction.update({
-                embeds: [this.pages[this.index]],
+                  embeds: [this.pages[this.index]],
+                  ...(this.files && {files: [this.files[this.files]]})
               });
             }
         });
