@@ -107,13 +107,13 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Pagination<span class="tsd-signature-symbol">(</span>channel<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TextChannel</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">DMChannel</span>, pages<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">MessageEmbed</span><span class="tsd-signature-symbol">[]</span>, footerText<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, options<span class="tsd-signature-symbol">?: </span><a href="../interfaces/buttonoption.html" class="tsd-signature-type" data-tsd-kind="Interface">ButtonOption</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="pagination.html" class="tsd-signature-type" data-tsd-kind="Class">Pagination</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Pagination<span class="tsd-signature-symbol">(</span>channel<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TextChannel</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">DMChannel</span>, pages<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">MessageEmbed</span><span class="tsd-signature-symbol">[]</span>, footerText<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, options<span class="tsd-signature-symbol">?: </span><a href="../interfaces/buttonoption.html" class="tsd-signature-type" data-tsd-kind="Interface">ButtonOption</a><span class="tsd-signature-symbol">[]</span>, Author<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">UserResolvable</span>, files<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">MessageAttachment</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="pagination.html" class="tsd-signature-type" data-tsd-kind="Class">Pagination</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/CRZA5/discordjs-button-embed-pagination/blob/4ab5115/src/index.ts#L10">index.ts:10</a></li>
+									<li>Defined in <a href="https://github.com/CRZA5/discordjs-button-embed-pagination/blob/c430272/src/index.ts#L18">index.ts:18</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -145,6 +145,20 @@
 										<p>optional options for the buttons</p>
 									</div>
 								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> Author: <span class="tsd-signature-type">UserResolvable</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>To limit the pagination to a specific author</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> files: <span class="tsd-signature-type">MessageAttachment</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>Optional files to attach</p>
+										</div>
+									</div>
+								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="pagination.html" class="tsd-signature-type" data-tsd-kind="Class">Pagination</a></h4>
 						</li>
@@ -159,7 +173,7 @@
 					<div class="tsd-signature tsd-kind-icon">channel<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">TextChannel</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">DMChannel</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/CRZA5/discordjs-button-embed-pagination/blob/4ab5115/src/index.ts#L8">index.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/CRZA5/discordjs-button-embed-pagination/blob/c430272/src/index.ts#L16">index.ts:16</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -169,7 +183,7 @@
 					<div class="tsd-signature tsd-kind-icon">index<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/CRZA5/discordjs-button-embed-pagination/blob/4ab5115/src/index.ts#L10">index.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/CRZA5/discordjs-button-embed-pagination/blob/c430272/src/index.ts#L18">index.ts:18</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -179,7 +193,7 @@
 					<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Message</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/CRZA5/discordjs-button-embed-pagination/blob/4ab5115/src/index.ts#L7">index.ts:7</a></li>
+							<li>Defined in <a href="https://github.com/CRZA5/discordjs-button-embed-pagination/blob/c430272/src/index.ts#L15">index.ts:15</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -189,7 +203,7 @@
 					<div class="tsd-signature tsd-kind-icon">pages<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">MessageEmbed</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/CRZA5/discordjs-button-embed-pagination/blob/4ab5115/src/index.ts#L9">index.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/CRZA5/discordjs-button-embed-pagination/blob/c430272/src/index.ts#L17">index.ts:17</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -206,7 +220,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/CRZA5/discordjs-button-embed-pagination/blob/4ab5115/src/index.ts#L44">index.ts:44</a></li>
+									<li>Defined in <a href="https://github.com/CRZA5/discordjs-button-embed-pagination/blob/c430272/src/index.ts#L61">index.ts:61</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
