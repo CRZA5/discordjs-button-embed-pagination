@@ -1,11 +1,11 @@
-import { Client, Message, MessageEmbed, TextChannel } from "discord.js";
+import { Client, EmbedBuilder, Message, TextChannel } from "discord.js";
 import { Pagination } from "discordjs-button-embed-pagination";
 import data from "../data.json";
 
 export class Bot extends Client {
   constructor() {
     super({
-      intents: ["GUILDS", "GUILD_MESSAGES"],
+      intents: ["Guilds", "GuildMessages", "MessageContent"],
     });
     this.on("ready", this.onReady);
     this.on("message", this.onMessage);
@@ -20,17 +20,35 @@ export class Bot extends Client {
     if (message.content == "paginate") {
       // fill embed here
       const embeds = data.map((x) => {
-        return new MessageEmbed()
-          .setColor("RANDOM")
-          .addField(
-            "Name",
-            x.name.title + " " + x.name.last + " " + x.name.last
-          )
-          .addField("Gender", x.gender)
-          .addField("Email", x.email)
-          .addField("Date of Birth", new Date(x.dob).toDateString())
-          .addField("Age", x.age.toString())
-          .addField("Phone", x.phone)
+        return new EmbedBuilder()
+          .setColor("Random")
+          .addFields([
+            {
+              name: "Name",
+              value: x.name.title + " " + x.name.last + " " + x.name.last,
+            },
+            {
+              name: "Gender",
+              value: x.gender,
+            },
+            {
+              name: "Email",
+              value: x.email,
+            },
+            {
+              name: "Date of Birth",
+              value: new Date(x.dob).toDateString(),
+            },
+            {
+              name: "Age",
+              value: x.age.toString(),
+            },
+            {
+              name: "Phone",
+              value: x.phone,
+            },
+          ])
+
           .setThumbnail(x.image);
       });
       //without options

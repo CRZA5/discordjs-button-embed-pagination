@@ -1,14 +1,7 @@
-import {
-  EmojiIdentifierResolvable,
-  MessageButtonStyleResolvable,
-} from "discord.js";
-import { MessageButtonStyles } from "discord.js/typings/enums";
+import { ComponentEmojiResolvable, ButtonStyle } from "discord.js";
 
 export interface ButtonOption {
-  emoji?: EmojiIdentifierResolvable;
+  emoji?: ComponentEmojiResolvable;
   label?: string;
-  style: Exclude<
-    MessageButtonStyleResolvable,
-    "LINK" | MessageButtonStyles.LINK
-  >;
+  style: Exclude<ButtonStyle, ButtonStyle.Link>;
 }

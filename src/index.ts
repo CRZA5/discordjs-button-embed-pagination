@@ -1,10 +1,12 @@
 import {
+  ActionRowBuilder,
+  AttachmentBuilder,
+  ButtonBuilder,
+  ButtonStyle,
   DMChannel,
+  EmbedBuilder,
   Message,
-  MessageButton,
-  MessageEmbed,
   TextChannel,
-  MessageAttachment,
   UserResolvable,
 } from "discord.js";
 import { ButtonOption } from "./types/ButtonOption";
@@ -14,28 +16,54 @@ const availableEmojis = ["⏮️", "◀️", "⏹️", "▶️", "⏭️"];
 class Pagination {
   private message?: Message;
   private readonly channel: TextChannel | DMChannel;
-  private readonly pages: MessageEmbed[];
+  private readonly pages: EmbedBuilder[];
   private index = 0;
+  private readonly defaultOptions: ButtonOption[] = [
+    {
+      style: ButtonStyle.Primary,
+      label: "First",
+      emoji: "⏮️",
+    },
+    {
+      style: ButtonStyle.Primary,
+      label: "Prev",
+      emoji: "◀️",
+    },
+    {
+      style: ButtonStyle.Danger,
+      label: "Stop",
+      emoji: "⏹️",
+    },
+    {
+      style: ButtonStyle.Primary,
+      label: "Next",
+      emoji: "▶️",
+    },
+    {
+      style: ButtonStyle.Primary,
+      label: "Last",
+      emoji: "⏭️",
+    },
+  ];
 
   /**
    *
    * @param {TextChannel | DMChannel} channel - The target channel
-   * @param {MessageEmbed[]} pages - Embed pages
-   * @param {MessageAttachment[]} files - Optional files to attach
+   * @param {EmbedBuilder[]} pages - Embed pages
    * @param {string} [footerText] - Optional footer text, will show `Text 1 of 5` if you pass `Text`, for example
    * @param {number} timeout - How long button need to be active
    * @param {ButtonOption[]} options - optional options for the buttons
    * @param {UserResolvable} Author - To limit the pagination to a specific author
-   * @param files {MessageAttachment[]} - Optional files to attach
+   * @param {AttachmentBuilder[]} files - Optional files to attach
    */
   constructor(
     channel: TextChannel | DMChannel,
-    pages: MessageEmbed[],
+    pages: EmbedBuilder[],
     private readonly footerText = "Page",
     private readonly timeout?: number,
     private readonly options?: ButtonOption[],
     private readonly Author?: UserResolvable,
-    private readonly files?: MessageAttachment[]
+    private readonly files?: AttachmentBuilder[]
   ) {
     if (options && options.length > 5) {
       throw new TypeError("You have passed more than 5 buttons as options");
@@ -48,7 +76,11 @@ class Pagination {
     }
 
     this.pages = pages.map((page, pageIndex) => {
-      if (page.footer && (page.footer.text || page.footer.iconURL)) return page;
+      if (
+        page.data.footer &&
+        (page.data.footer.text || page.data.footer.icon_url)
+      )
+        return page;
       return page.setFooter({
         text: `${footerText} ${pageIndex + 1} of ${pages.length}`,
       });
@@ -59,61 +91,22 @@ class Pagination {
    * Starts the pagination
    */
   async paginate(): Promise<void> {
+    const options = this.options || this.defaultOptions;
     this.message = await this.channel.send({
       embeds: [this.pages[this.index]],
       ...(this.files && { files: [this.files[this.index]] }),
       components: [
-        {
-          type: 1,
-          components: this.options
-            ? this.options.map((x, i) => {
-                return new MessageButton({
-                  emoji: x.emoji,
-                  style: x.style,
-                  type: 2,
-                  label: x.label,
-                  customId: availableEmojis[i],
-                });
-              })
-            : [
-                {
-                  type: 2,
-                  style: "PRIMARY",
-                  label: "First",
-                  emoji: "⏮️",
-                  customId: "⏮️",
-                },
-                {
-                  type: 2,
-
-                  style: "PRIMARY",
-                  label: "Prev",
-                  emoji: "◀️",
-                  customId: "◀️",
-                },
-                {
-                  type: 2,
-                  style: "DANGER",
-                  label: "Stop",
-                  emoji: "⏹️",
-                  customId: "⏹️",
-                },
-                {
-                  type: 2,
-                  style: "PRIMARY",
-                  label: "Next",
-                  emoji: "▶️",
-                  customId: "▶️",
-                },
-                {
-                  type: 2,
-                  style: "PRIMARY",
-                  label: "Last",
-                  emoji: "⏭️",
-                  customId: "⏭️",
-                },
-              ],
-        },
+        new ActionRowBuilder<ButtonBuilder>({
+          components: options.map((x, i) => {
+            return new ButtonBuilder({
+              emoji: x.emoji,
+              style: x.style,
+              type: 2,
+              label: x.label,
+              customId: availableEmojis[i],
+            });
+          }),
+        }),
       ],
     });
     if (this.pages.length < 2) {
@@ -137,7 +130,7 @@ class Pagination {
       },
       this.timeout ? this.timeout : 60000
     );
-    interactionCollector.on("collect", async (interaction) => {
+    interactionCollector?.on("collect", async (interaction) => {
       const { customId } = interaction;
       let newIndex =
         customId === availableEmojis[0]
@@ -167,7 +160,7 @@ class Pagination {
         });
       }
     });
-    interactionCollector.on("end", async () => {
+    interactionCollector?.on("end", async () => {
       await this?.message?.edit({
         components: [],
       });

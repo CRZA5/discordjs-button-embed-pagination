@@ -8,7 +8,7 @@
 
 ## About
 
-Discord.js V13 embed pagination with button written in typescript
+Discord.js V14 embed pagination with button written in typescript
 
 **Features:**
 
@@ -22,7 +22,7 @@ Discord.js V13 embed pagination with button written in typescript
 - [Repository](https://github.com/CRZA5/discordjs-button-embed-pagination)
 
 ## Installation
-**Discord.js v13**
+**Discord.js v14**
 - npm
 ```bash
 npm i discord.js

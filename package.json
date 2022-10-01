@@ -1,7 +1,7 @@
 {
   "name": "discordjs-button-embed-pagination",
-  "version": "4.0.3",
-  "description": "Discord.js V13 embed pagination with button",
+  "version": "5.0.0",
+  "description": "Discord.js V14 embed pagination with button",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "author": "Amal Zacharia <contact@crza.dev>",
@@ -31,15 +31,15 @@
     "dist/*"
   ],
   "dependencies": {
-    "discord.js": "^13.8.1"
+    "discord.js": "^14.1.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.3",
-    "@babel/preset-env": "^7.14.4",
-    "@babel/preset-typescript": "^7.13.0",
-    "@types/node": "^15.12.4",
-    "prettier": "^2.3.1",
-    "typedoc": "^0.20.34",
-    "typescript": "~4.2.2"
+    "@babel/core": "^7.18.10",
+    "@babel/preset-env": "^7.18.10",
+    "@babel/preset-typescript": "^7.18.6",
+    "@types/node": "^18.6.3",
+    "prettier": "^2.7.1",
+    "typedoc": "^0.23.10",
+    "typescript": "~4.7.4"
   }
 }
